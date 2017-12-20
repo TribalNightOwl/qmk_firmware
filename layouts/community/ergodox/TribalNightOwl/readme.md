@@ -1,15 +1,48 @@
-# ErgoDox EZ Default Configuration
+# ErgoDox EZ TribalNightOwl configuration
 
-## Changelog
+It is based on the default configuration.
 
-* Dec 2016:
-  * Added LED keys
-  * Refreshed layout graphic, comes from http://configure.ergodox-ez.com now.
-* Sep 22, 2016:
-  * Created a new key in layer 1 (bottom-corner key) that resets the EEPROM.
-* Feb 2, 2016 (V1.1): 
-  * Made the right-hand quote key double as Cmd/Win on hold. So you get ' when you tap it, " when you tap it with Shift, and Cmd or Win when you hold it. You can then use it as a modifier, or just press and hold it for a moment (and then let go) to send a single Cmd or Win keystroke (handy for opening the Start menu on Windows).
+These are the ideas I am considering:
 
-This is what we ship with out of the factory. :) The image says it all:
+## Implemented
+
+## To-Do
+
+* Uppercase letter and Spanish accented vowel
+  1 tap = a
+  2 tap = A
+  long tap = á
+
+  2 taps on all letters send uppercase?  Maybe won't work for cases where letter repeats, like:  letter, cannot, communication, 
+
+  Maybe long tap = uppercase for all letters
+  2 tap = acento en las vocales
+
+  Maybe double tap but second tap hold produces accented vowel and forget about producing uppercase with tap dance
+
+  Long press on n =ñ
+  Double tap on ~ = ñ
+
+
+
+* Multi tap symbols
+1 tap = (
+2 tap = [
+3 tap = {
+
+1 tap = '
+2 tap = "
+3 tap = `
+
+1 tap = /
+2 tap = |
+3 tap = \
+
+1 tap = .
+2 tap = :
+
+1 tap = ,
+2 tap = ;
+
 
 ![Default](https://i.imgur.com/Be53jH7.png)
