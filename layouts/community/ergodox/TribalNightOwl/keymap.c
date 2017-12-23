@@ -2,7 +2,7 @@
 #define CONFIG_USER_H
 #endif
 
-#include "./config.h"
+#include "config.h"
 
 #include QMK_KEYBOARD_H
 #include "debug.h"
