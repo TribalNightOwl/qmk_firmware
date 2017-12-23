@@ -13,7 +13,8 @@ enum {
  CT_CLN,
  CT_EGG,
  CT_FLSH,
- X_TAP_DANCE
+ X_TAP_DANCE,
+ TD_ESC_CAPS
 };
 
 void dance_egg (qk_tap_dance_state_t *state, void *user_data) {
@@ -45,7 +46,8 @@ void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
 //All tap dance functions would go here. Only showing this one.
 qk_tap_dance_action_t tap_dance_actions[] = {
  [CT_EGG] = ACTION_TAP_DANCE_FN (dance_egg),
- [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
+ [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset),
+ [TD_ESC_CAPS]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS)
 };
 
 
@@ -179,9 +181,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
        KC_TRNS,  KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
                           KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_WBAK
+       TD(CT_CLN), KC_TRNS,
+	   TD(TD_ESC_CAPS),
+       TD(CT_EGG), KC_TRNS, KC_WBAK
 ),
 };
 
