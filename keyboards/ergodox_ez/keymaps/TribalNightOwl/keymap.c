@@ -3,7 +3,7 @@
 #define CONFIG_USER_H
 #endif
 
-#include "../../../../keyboards/ergodox_ez/keymaps/TribalNightOwl/config.h"
+#include "config.h"
 
 #include QMK_KEYBOARD_H
 #include "debug.h"
