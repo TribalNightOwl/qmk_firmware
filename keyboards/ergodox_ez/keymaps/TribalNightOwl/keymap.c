@@ -1,10 +1,3 @@
-
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
-#endif
-
-#include "config.h"
-
 #include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
@@ -13,6 +6,48 @@
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
+
+// Enums defined for all examples:
+enum {
+ CT_SE = 0,
+ CT_CLN,
+ CT_EGG,
+ CT_FLSH,
+ X_TAP_DANCE
+};
+
+void dance_egg (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count >= 10) {
+    SEND_STRING ("Safety dance!");
+    reset_tap_dance (state);
+  }
+}
+
+
+void dance_cln_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    register_code (KC_RSFT);
+    register_code (KC_SCLN);
+  } else {
+    register_code (KC_SCLN);
+  }
+}
+
+void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    unregister_code (KC_RSFT);
+    unregister_code (KC_SCLN);
+  } else {
+    unregister_code (KC_SCLN);
+  }
+}
+
+//All tap dance functions would go here. Only showing this one.
+qk_tap_dance_action_t tap_dance_actions[] = {
+ [CT_EGG] = ACTION_TAP_DANCE_FN (dance_egg),
+ [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
+};
+
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -280,3 +315,4 @@ uint32_t layer_state_set_user(uint32_t state) {
 
   return state;
 };
+
