@@ -1,8 +1,9 @@
+
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
 #endif
 
-#include "config.h"
+#include "../../../../keyboards/ergodox_ez/keymaps/TribalNightOwl/config.h"
 
 #include QMK_KEYBOARD_H
 #include "debug.h"
