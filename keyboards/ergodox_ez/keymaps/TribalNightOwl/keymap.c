@@ -9,7 +9,7 @@
 #define SYMB 1 // symbols
 #define MOVE 2 // move keys
 
-
+#define _______ KC_TRNS
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -45,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_ESC,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_DELT,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
+        KC_DELT,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TD(CT_SQTE_DQTE_BQTE_CARET),
         KC_DELT,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
-        KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   TD(CT_LPRN_LBRC_LCBR),
-        LT(SYMB,KC_GRV),KC_QUOT,      KC_TRNS,  KC_TRNS,TT(MOVE),
+		OSM(MOD_LSFT),        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   TD(CT_LPRN_LBRC_LCBR_LTHAN),
+        LT(SYMB,KC_GRV),KC_QUOT,      _______,OSL(SYMB),TT(MOVE),
                                               ALT_T(KC_APP),  KC_LGUI,
                                                               KC_HOME,
                                                KC_BSPC,KC_TAB,KC_END,
@@ -56,8 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_RGHT,     KC_6,   KC_7,  KC_8,   KC_9,   KC_0,             KC_MINS,
              TG(SYMB),    KC_Y,   KC_U,  KC_I,   KC_O,   KC_P,             KC_BSLS,
                           KC_H,   KC_J,  KC_K,   KC_L,   TD(CT_MINUS_UNDSCR_EQUAL),GUI_T(KC_QUOT),
-             TD(CT_RPRN_RBRC_RCBR),KC_N,   KC_M,  TD(CT_COMM_SCLN),TD(CT_DOT_CLN), TD(CT_SLSH_PIPE_BSLSH),   KC_RSFT,
-                                  KC_RSFT, KC_RCTL,KC_RALT,KC_RBRC,          KC_FN1,
+             TD(CT_RPRN_RBRC_RCBR_GTHAN),KC_N,   KC_M,   TD(CT_COMM_SCLN),TD(CT_DOT_CLN), TD(CT_SLSH_PIPE_BSLSH),   OSM(MOD_LSFT),
+                                  OSM(MOD_RSFT), OSM(MOD_RCTL),OSM(MOD_RALT),KC_RBRC,          KC_FN1,
              KC_LALT,        CTL_T(KC_ESC),
              KC_PGUP,
              KC_PGDN,KC_ENT, KC_SPC
@@ -86,23 +86,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = LAYOUT_ergodox(
        // left hand
-       VRSN,   KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,TO(BASE),
-       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-          EPRM,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                       RGB_MOD,KC_TRNS,
-                                               KC_TRNS,
-                               RGB_VAD,RGB_VAI,KC_TRNS,
+       VRSN,   KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  TO(BASE),
+       _______,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,_______,
+       _______,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
+       _______,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,_______,
+          EPRM,_______,_______,_______,_______,
+                                       RGB_MOD,_______,
+                                               _______,
+                               RGB_VAD,RGB_VAI,_______,
        // right hand
-       KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-	   TO(BASE), KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
-                KC_DOWN, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
-       KC_TRNS, KC_AMPR, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-                         KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
+       TO(BASE), KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
+	   _______, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
+                KC_DOWN, KC_4,   KC_5,    KC_6,    KC_PLUS, _______,
+       _______, KC_AMPR, KC_1,   KC_2,    KC_3,    KC_BSLS, _______,
+                         KC_0,KC_DOT,  KC_0,    KC_EQL,  _______,
        RGB_TOG, RGB_SLD,
-       KC_TRNS,
-       KC_TRNS, RGB_HUD, RGB_HUI
+       _______,
+       _______, RGB_HUD, RGB_HUI
 ),
 /* Keymap 2: Media and mouse keys
  *
@@ -127,23 +127,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // MEDIA AND MOUSE
 [MOVE] = LAYOUT_ergodox(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(BASE),
-       KC_TRNS, KC_TRNS, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, TO(BASE),
-       KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                           KC_BTN3, KC_TRNS,
-                                                    KC_TRNS,
-                                  KC_TRNS, KC_TRNS, KC_TRNS,
+       _______, _______, _______, _______, _______, _______, TO(BASE),
+       _______, _______, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, TO(BASE),
+       _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,
+       _______, _______, _______, _______, _______, KC_BTN1, KC_BTN2,
+       _______, _______, _______, _______, _______,
+                                           KC_BTN3, _______,
+                                                    _______,
+                                  _______, _______, _______,
     // right hand
-       TO(BASE),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-	   TO(BASE), KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TRNS, KC_TRNS,
-                 KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
+       TO(BASE),  _______, _______, _______, _______, _______, _______,
+	   TO(BASE), KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
+                 KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+       _______,  _______, _______, _______, _______, _______, _______,
+                          _______, _______, _______, _______, _______,
+       _______, _______,
 	   TD(TD_ESC_CAPS),
-       TD(CT_EGG), KC_TRNS, KC_TRNS
+       TD(CT_EGG), _______, _______
 ),
 };
 
@@ -213,7 +213,7 @@ void matrix_init_user(void) {
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-	  uint8_t modifiders = get_mods();
+	  uint8_t modifiers = get_mods();
 
 	  ergodox_board_led_off();
 	  ergodox_right_led_1_off();
@@ -223,13 +223,13 @@ void matrix_scan_user(void) {
 		// Since we're not using the LEDs here for layer indication anymore,
 		// then lets use them for modifier indicators.  Shame we don't have 4...
 		// Also, no "else", since we want to know each, independantly.
-	  if (modifiders & MODS_SHIFT_MASK) {
+	  if (modifiers & MODS_SHIFT_MASK) {
 		  ergodox_right_led_2_on();
 		}
-		if (modifiders & MODS_CTRL_MASK) {
+		if (modifiers & MODS_CTRL_MASK) {
 		  ergodox_right_led_1_on();
 		}
-		if (modifiders & MODS_ALT_MASK) {
+		if (modifiers & MODS_ALT_MASK) {
 		  ergodox_right_led_3_on();
 	  }
 };
@@ -245,6 +245,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   switch (layer) {
       case 0:
         #ifdef RGBLIGHT_COLOR_LAYER_0
+    	  rgblight_mode(0);
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
         #else
           rgblight_init();
@@ -259,7 +260,9 @@ uint32_t layer_state_set_user(uint32_t state) {
       case 2:
         //ergodox_right_led_2_on();
         #ifdef RGBLIGHT_COLOR_LAYER_2
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
+    	  rgblight_set_yellow
+    	  rgblight_mode(23);
+          //rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
         #endif
         break;
       case 3:
