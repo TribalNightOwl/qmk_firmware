@@ -1,3 +1,16 @@
+/*
+ * SINGLE_TAP  = /
+ * SINGLE_HOLD = |
+ * DOUBLE_TAP  = \
+ * DOUBLE_HOLD = LALT
+ *
+ */
+
+#define SINGLE_TAP_KC  {register_code(KC_SLSH);}
+#define SINGLE_HOLD_KC {register_code(KC_LSFT); register_code(KC_BSLASH);}
+#define DOUBLE_TAP_KC  {register_code(KC_BSLASH);}
+#define DOUBLE_HOLD_KC {register_code(KC_LALT);}
+
 //instance of 'tap' for this tap dance.
 static tap dance3_state = {
   .is_press_action = true,
@@ -7,10 +20,10 @@ static tap dance3_state = {
 void dance3_finished (qk_tap_dance_state_t *state, void *user_data) {
   dance3_state.state = cur_dance(state);
   switch (dance3_state.state) {
-    case SINGLE_TAP: register_code(KC_SLSH); break;
-    case SINGLE_HOLD: register_code(KC_LSFT); register_code(KC_BSLASH); break;
-    case DOUBLE_TAP: register_code(KC_BSLASH); break;
-    case DOUBLE_HOLD: register_code(KC_LALT); break;
+    case SINGLE_TAP:  SINGLE_TAP_KC break;
+    case SINGLE_HOLD: SINGLE_HOLD_KC break;
+    case DOUBLE_TAP:  DOUBLE_TAP_KC break;
+    case DOUBLE_HOLD: DOUBLE_HOLD_KC break;
     case DOUBLE_SINGLE_TAP: register_code(KC_SLSH); unregister_code(KC_SLSH); register_code(KC_SLSH);
     //Last case is for fast typing. Assuming your key is `f`:
     //For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
