@@ -1,6 +1,28 @@
 # ErgoDox EZ TribalNightOwl configuration
 
-It is based on the default configuration.
+It is based on the default configuration (QWERTY).
+
+## Principles
+
+Minimal movement to the outside of the pinky
+Modifiers mostly on the thumb but available in multiple keys to facilitate certain combinations like ALT+TAB
+Oneshot modifiers
+Motion layer with access to common editing keys
+
+### Motion layer
+#### Left hand
+Mouse movement
+Mouse scroll wheel
+Z,X,C,V keys available for use with CTRL for undo, cut, copy, paste (maybe I will use LCTL() in the future)
+Delete, Backspace, TAB available for text corrections
+
+#### Right hand
+Cursor movement
+Page Up, Page down, HOME, END
+SHIFT, CTRL, ALT available for text selection and correction
+
+
+
 
 These are the ideas I am considering:
 
