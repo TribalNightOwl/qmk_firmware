@@ -6,6 +6,8 @@ enum {
  CT_LPRN_LBRC_LCBR_LTHAN,
  CT_RPRN_RBRC_RCBR_GTHAN,
  CT_SQTE_DQTE_BQTE_CARET,
+ CT_COPY_PASTE_CUT_EMACS,
+ CT_COPY_PASTE_CUT_WINDOWS,
  CT_EGG,
  TD_ESC_CAPS
 };
@@ -51,6 +53,7 @@ int cur_dance (qk_tap_dance_state_t *state) {
 #include "tapdance5.h"
 #include "tapdance6.h"
 #include "tapdance7.h"
+#include "tapdance8.h"
 
 void dance_egg (qk_tap_dance_state_t *state, void *user_data) {
   if (state->count >= 4) {
@@ -68,6 +71,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
  TAPDANCE5(CT_LPRN_LBRC_LCBR_LTHAN),
  TAPDANCE6(CT_RPRN_RBRC_RCBR_GTHAN),
  TAPDANCE7(CT_SQTE_DQTE_BQTE_CARET),
+ TAPDANCE8(CT_COPY_PASTE_CUT_EMACS),
  [CT_EGG] = ACTION_TAP_DANCE_FN (dance_egg),
  [TD_ESC_CAPS]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS)
 };
