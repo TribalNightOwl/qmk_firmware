@@ -58,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          KC_H,LSFT_T(KC_J), CTL_T(KC_K),     ALT_T(KC_L),     TD(CT_MINUS_UNDSCR_EQUAL),GUI_T(KC_QUOT),
              TD(CT_RPRN_RBRC_RCBR_GTHAN),KC_N,KC_M,         TD(CT_COMM_SCLN),TD(CT_DOT_CLN),  TD(CT_SLSH_PIPE_BSLSH),   TD(CT_COPY_PASTE_CUT_EMACS),
                                               OSM(MOD_RSFT),OSM(MOD_RCTL),   OSM(MOD_RALT),   TD(CT_COPY_PASTE_CUT_EMACS),                  _______,
-             _______,        _______,
+			 _______,KC_ESC,
              _______,
-             KC_ESC ,KC_ENT, KC_SPC
+			 _______,KC_ENT, KC_SPC
     ),
 /* Keymap 1: Symbol Layer
  *
