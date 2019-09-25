@@ -1,5 +1,6 @@
 /*
 Copyright 2017 Luiz Ribeiro <luizribeiro@gmail.com>
+Modified 2018 Kenneth A. <github.com/krusli>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,24 +18,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "jj40.h"
 
-#include <avr/pgmspace.h>
+#ifdef RGBLIGHT_ENABLE
 
-#include "action_layer.h"
-#include "quantum.h"
+#include <string.h>
+#include "i2c_master.h"
+#include "rgblight.h"
 
-__attribute__ ((weak))
-void matrix_scan_user(void) {
-    /* Nothing to do here... yet */
-}
+extern rgblight_config_t rgblight_config;
 
 void matrix_init_kb(void) {
-
-  // Call the keymap level matrix init.
+  i2c_init();
+  // call user level keymaps, if any
   matrix_init_user();
+}
+// custom RGB driver
+void rgblight_set(void) {
+  if (!rgblight_config.enable) {
+    memset(led, 0, 3 * RGBLED_NUM);
+  }
 
-  // Set our LED pins as output
-  DDRB |= (1<<6);
+  i2c_transmit(0xb0, (uint8_t*)led, 3 * RGBLED_NUM, 100);
 }
 
-void matrix_init_user(void) {
+bool rgb_init = false;
+
+void matrix_scan_kb(void) {
+  // if LEDs were previously on before poweroff, turn them back on
+  if (rgb_init == false && rgblight_config.enable) {
+    i2c_transmit(0xb0, (uint8_t*)led, 3 * RGBLED_NUM, 100);
+    rgb_init = true;
+  }
+
+  rgblight_task();
+  matrix_scan_user();
 }
+
+#endif
