@@ -1,41 +1,21 @@
-# Copyright 2017 Luiz Ribeiro <luizribeiro@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 # MCU name
 MCU = atmega32a
 
 # Bootloader selection
-#   Teensy       halfkay
-#   Pro Micro    caterina
-#   Atmel DFU    atmel-dfu
-#   LUFA DFU     lufa-dfu
-#   QMK DFU      qmk-dfu
-#   ATmega32A    bootloadHID
-#   ATmega328P   USBasp
-BOOTLOADER = bootloadHID
+BOOTLOADER = bootloadhid
 
-# build options
-BOOTMAGIC_ENABLE = lite
-MOUSEKEY_ENABLE = no
-EXTRAKEY_ENABLE = yes
-CONSOLE_ENABLE = yes
-COMMAND_ENABLE = yes
-BACKLIGHT_ENABLE = no
-RGBLIGHT_ENABLE = no
-RGBLIGHT_CUSTOM_DRIVER = yes
+# Build Options
+#   change yes to no to disable
+#
+BOOTMAGIC_ENABLE = lite     # Enable Bootmagic Lite
+MOUSEKEY_ENABLE = no        # Mouse keys
+EXTRAKEY_ENABLE = yes       # Audio control and System control
+CONSOLE_ENABLE = no         # Console for debug
+COMMAND_ENABLE = yes        # Commands for debug and configuration
+# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
+SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
+BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
+RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+WS2812_DRIVER = i2c
 
-OPT_DEFS = -DDEBUG_LEVEL=0
-
-SRC += i2c_master.c
+LAYOUTS = 60_ansi_split_bs_rshift 60_hhkb
